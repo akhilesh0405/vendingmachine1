@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ebene Vending Machine</title>
+    <style>
+        body { font-family: Arial; background-color: #f8f8f8; text-align: center; }
+        .product {
+            display: inline-block; 
+            border: 1px solid #ccc;
+            background: white;
+            border-radius: 10px;
+            margin: 15px;
+            padding: 15px;
+            width: 220px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎂 Ebene Vending Machine 🥤</h1>
+    {% for p in products %}
+    <div class="product">
+        <h3>{{ p.name }}</h3>
+        <p>Category: {{ p.get_category_display }}</p>
+        <p>Price: Rs {{ p.price }}</p>
+        <p>Qty Left: {{ p.quantity_left }}</p>
+    </div>
+    {% endfor %}
+</body>
+</html>

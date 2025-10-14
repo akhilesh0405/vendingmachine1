@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Purchase Result</title>
+  <style>
+    body { font-family: Arial; background:#f4f4f4; text-align:center; padding:40px; }
+    .box { background:#fff; margin:0 auto; padding:30px; width:480px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.12); }
+    a.button { display:inline-block; margin:10px 8px; padding:10px 16px; color:white; background:#007bff; border-radius:6px; text-decoration:none; }
+    a.exit { background:#6c757d; }
+    .details { text-align:left; margin-top:14px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Result</h2>
+    <p>{{ message }}</p>
+
+    {% if inserted_details %}
+      <div class="details">
+        <strong>Inserted:</strong> {{ inserted_details }}<br>
+        <strong>Change returned:</strong> {{ change_details }}
+      </div>
+    {% endif %}
+
+    <div style="margin-top:18px;">
+      <a href="{{ continue_url|default:'/' }}" class="button">Continue other purchase</a>
+      <a href="{{ home_url|default:'/' }}" class="button exit">Exit to Home</a>
+    </div>
+  </div>
+</body>
+</html>

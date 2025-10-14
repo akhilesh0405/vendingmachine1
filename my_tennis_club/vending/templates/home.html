@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ebene Vending Machine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      background-color: #007bff;
+      color: white;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+    .row-title {
+      font-size: 20px;
+      margin: 30px 0 10px;
+      color: #007bff;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .product {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 15px;
+      width: 220px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .product h3 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+    .product a {
+      display: inline-block;
+      background-color: #28a745;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .product a:hover {
+      background-color: #218838;
+    }
+    .footer {
+      background: #007bff;
+      color: white;
+      padding: 10px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎂 Ebene Vending Machine 🥤</h1>
+
+  <!-- Cakes Row -->
+  <div class="row-title">Cakes</div>
+  <div class="row">
+    {% for p in products %}
+      {% if p.category == 'cake' %}
+      <div class="product">
+        <h3>{{ p.name }} (ID: {{ p.id }})</h3>
+        <p>Price: Rs {{ p.price }}</p>
+        <p>Quantity Left: {{ p.quantity_left }}</p>
+        <!-- ✅ Changed link below -->
+        <a href="{% url 'purchase_form' %}?product_id={{ p.id }}">Buy Now</a>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Soft Drinks Row -->
+  <div class="row-title">Soft Drinks</div>
+  <div class="row">
+    {% for p in products %}
+      {% if p.category == 'drink' %}
+      <div class="product">
+        <h3>{{ p.name }} (ID: {{ p.id }})</h3>
+        <p>Price: Rs {{ p.price }}</p>
+        <p>Quantity Left: {{ p.quantity_left }}</p>
+        <!-- ✅ Changed link below -->
+        <a href="{% url 'purchase_form' %}?product_id={{ p.id }}">Buy Now</a>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="footer">
+    <p>© 2025 Polytechnic Vending Project</p>
+  </div>
+</body>
+</html>

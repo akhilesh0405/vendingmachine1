@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insert Money - Vending Machine</title>
+  <style>
+    body { font-family: Arial; text-align: center; background-color: #f4f4f4; }
+    .box { background: white; width: 400px; margin: 100px auto; padding: 20px; border-radius: 10px; box-shadow: 0 0 8px #ccc; }
+    input, textarea { width: 90%; padding: 8px; margin: 8px 0; }
+    button { background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Insert Money for {{ product.name }}</h2>
+    <p>Price: Rs {{ product.price }}</p>
+    <form method="post">
+      {% csrf_token %}
+      <label>Amount Inserted (Rs):</label><br>
+      <input type="number" step="0.01" name="amount_inserted" required><br>
+      <label>Insert Details (e.g., 1 x Rs100, 2 x Rs50):</label><br>
+      <textarea name="inserted_details" required></textarea><br>
+      <button type="submit">Confirm Purchase</button>
+    </form>
+  </div>
+</body>
+</html>
